@@ -1,0 +1,54 @@
+[package]
+name = "cim-domain-relationship"
+version = "0.1.0"
+edition = "2021"
+authors = ["The Cowboy AI"]
+description = "Relationship domain for CIM - Graph edges and hypergraph compositions for cross-entity relationships"
+license = "MIT"
+repository = "https://github.com/thecowboyai/cim-domain-relationship"
+homepage = "https://github.com/thecowboyai/cim-domain-relationship"
+keywords = ["cim", "domain", "relationship", "graph", "hypergraph", "nats"]
+categories = ["data-structures", "web-programming"]
+
+[dependencies]
+# Domain dependencies
+cim-domain = { path = "../cim-domain" }
+cim-domain-spaces = { path = "../cim-domain-spaces" }
+
+# Core dependencies
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.4", features = ["v7", "serde"] }
+
+# Async dependencies
+async-trait = "0.1"
+tokio = { version = "1.32", features = ["full"] }
+async-nats = "0.35"
+futures = "0.3"
+tokio-stream = "0.1"
+
+# Content addressing and cryptographic hashing
+cid = "0.11"
+multihash = "0.19"
+blake3 = "1.5"
+
+# Additional dependencies
+rand = "0.8"
+tracing-subscriber = "0.3"
+
+[dev-dependencies]
+tokio-test = "0.4"
+pretty_assertions = "1.4"
+rstest = "0.18"
+tracing-subscriber = "0.3"
+criterion = { version = "0.5", features = ["html_reports", "async_tokio"] }
+
+[[bin]]
+name = "relationship-service"
+path = "src/bin/relationship-service.rs"
+
+[features]
+default = []
